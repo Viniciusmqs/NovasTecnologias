@@ -1,0 +1,276 @@
+### 1. Lista de Números
+lista = [12, -2, 4, 8, 29, 45, 78, 36, -17, 2, 12, 8, 3, 3, -52]
+
+# a. Imprimir o maior elemento
+print(f'Maior elemento: {max(lista)}')
+
+# b. Imprimir o menor elemento
+print(f'Menor elemento: {min(lista)}')
+
+# c. Imprimir os números pares
+numeros_pares = [num for num in lista if num % 2 == 0]
+print(f'Números pares: {numeros_pares}')
+
+# d. Imprimir o número de ocorrências do primeiro elemento
+ocorrencias_primeiro = lista.count(lista[0])
+print(f'Número de ocorrências do primeiro elemento ({lista[0]}): {ocorrencias_primeiro}')
+
+# e. Imprimir a média dos elementos
+media = sum(lista) / len(lista)
+print(f'Média dos elementos: {media:.2f}')
+
+# f. Imprimir a soma dos elementos de valor negativo
+soma_negativos = sum(num for num in lista if num < 0)
+print(f'Soma dos elementos negativos: {soma_negativos}')
+
+### 2. Jogo da Forca
+import random
+
+def jogo_da_forca():
+    palavras = ['python', 'programacao', 'desafio', 'computador', 'jogo']
+    palavra = random.choice(palavras)
+    tentativas = 6
+    letras_acertadas = ['_' for _ in palavra]
+
+    while tentativas > 0 and '_' in letras_acertadas:
+        print(' '.join(letras_acertadas))
+        letra = input('Adivinhe uma letra: ').lower()
+
+        if letra in palavra:
+            for i, l in enumerate(palavra):
+                if l == letra:
+                    letras_acertadas[i] = letra
+        else:
+            tentativas -= 1
+            print(f'Letra incorreta! Tentativas restantes: {tentativas}')
+
+    if '_' not in letras_acertadas:
+        print(f'Você ganhou! A palavra era: {palavra}')
+    else:
+        print(f'Você perdeu! A palavra era: {palavra}')
+
+jogo_da_forca()
+
+### 3. Verificação de Parênteses
+def verificar_parenteses(expressao):
+    pilha = []
+    for char in expressao:
+        if char == '(':
+            pilha.append(char)
+        elif char == ')':
+            if not pilha or pilha[-1] != '(':
+                return "Erro"
+            pilha.pop()
+
+    return "OK" if not pilha else "Erro"
+
+# Exemplos de uso
+print(verificar_parenteses("(())"))       # OK
+print(verificar_parenteses("()()(()())"))  # OK
+print(verificar_parenteses("(()"))         # Erro
+print(verificar_parenteses("( ) )"))       # Erro
+
+### 4. Temperaturas
+T = [-10, -8, 0, 1, 2, 5, -2, -4]
+
+menor = min(T)
+maior = max(T)
+media = sum(T) / len(T)
+
+print(f'Menor temperatura: {menor}')
+print(f'Maior temperatura: {maior}')
+print(f'Temperatura média: {media:.2f}')
+
+### 5. Separação de Pares e Ímpares
+V = [9, 8, 7, 12, 0, 13, 21]
+pares = [num for num in V if num % 2 == 0]
+impares = [num for num in V if num % 2 != 0]
+
+print(f'Pares: {pares}')
+print(f'Ímpares: {impares}')
+
+### 6. Controle de Salas de Cinema
+lugares_vagos = [10, 2, 1, 3, 0]
+
+while True:
+    sala = int(input("Digite o número da sala (0 para sair): "))
+    if sala == 0:
+        break
+    lugares_solicitados = int(input("Quantos lugares deseja solicitar? "))
+
+    if sala >= 1 and sala <= 5:
+        if lugares_vagos[sala - 1] >= lugares_solicitados:
+            lugares_vagos[sala - 1] -= lugares_solicitados
+            print(f'Vendido! Lugares restantes na sala {sala}: {lugares_vagos[sala - 1]}')
+        else:
+            print(f'Não há lugares suficientes na sala {sala}.')
+    else:
+        print('Sala inválida.')
+
+### 7. Contagem de Caracteres em uma Frase
+frase = input("Digite uma frase: ")
+dicionario = {}
+
+for char in frase:
+    dicionario[char] = dicionario.get(char, 0) + 1
+
+print(dicionario)
+
+### 8. Comparação de Duas Listas
+lista1 = [1, 2, 3, 4, 5]
+lista2 = [4, 5, 6, 7, 8]
+
+conjunto1 = set(lista1)
+conjunto2 = set(lista2)
+
+print(f'Comuns: {conjunto1.intersection(conjunto2)}')
+print(f'Só na primeira: {conjunto1.difference(conjunto2)}')
+print(f'Só na segunda: {conjunto2.difference(conjunto1)}')
+print(f'Elementos não repetidos: {conjunto1.union(conjunto2)}')
+print(f'Lista 1 sem elementos da lista 2: {conjunto1.difference(conjunto2)}')
+
+### 9. Comparação de Versões de Listas
+versao_inicial = [1, 2, 3, 4]
+versao_alterada = [3, 4, 5, 6]
+
+inicial_set = set(versao_inicial)
+alterada_set = set(versao_alterada)
+
+print(f'Elementos que não mudaram: {inicial_set.intersection(alterada_set)}')
+print(f'Novos elementos: {alterada_set.difference(inicial_set)}')
+print(f'Elementos removidos: {inicial_set.difference(alterada_set)}')
+
+### 10. Informações de uma Pessoa
+pessoa = {
+    'first_name': 'Vinícius',
+    'last_name': 'Marques',
+    'age': 30,
+    'city': 'São Paulo'
+}
+
+for chave, valor in pessoa.items():
+    print(f'{chave}: {valor}')
+
+### 11. Lista de Pessoas
+pessoa1 = {'first_name': 'Vinícius', 'last_name': 'Marques', 'age': 30, 'city': 'São Paulo'}
+pessoa2 = {'first_name': 'Ana', 'last_name': 'Silva', 'age': 25, 'city': 'Rio de Janeiro'}
+pessoa3 = {'first_name': 'Carlos', 'last_name': 'Pereira', 'age': 28, 'city': 'Belo Horizonte'}
+
+people = [pessoa1, pessoa2, pessoa3]
+
+for pessoa in people:
+    for chave, valor in pessoa.items():
+        print(f'{chave}: {valor}')
+    print()
+
+### 12. Dicionários de Animais de Estimação
+pets = [
+    {'tipo': 'cachorro', 'nome_dono': 'Carlos'},
+    {'tipo': 'gato', 'nome_dono': 'Ana'},
+    {'tipo': 'pássaro', 'nome_dono': 'Fernanda'}
+]
+
+for pet in pets:
+    print(f'Tipo: {pet["tipo"]}, Dono: {pet["nome_dono"]}')
+
+### 13. Controle de Pedidos de Sanduíches
+sandwich_orders = ['atum', 'presunto', 'frango']
+finished_sandwiches = []
+
+for sandwich in sandwich_orders:
+    print(f'Preparei seu sanduíche de {sandwich}.')
+    finished_sandwiches.append(sandwich)
+
+print('Sanduíches preparados:', finished_sandwiches)
+
+### 14. Jogo da Velha
+def exibir_tabuleiro(tabuleiro):
+    for linha in tabuleiro:
+        print(' | '.join(linha))
+        print('-' * 5)
+
+def jogo_da_velha():
+    tabuleiro = [[' ' for _ in range(3)] for _ in range(3)]
+    jogadores = ['X', 'O']
+    vencedor = None
+
+    for jogada in range(9):
+        jogador_atual = jogadores[jogada % 2]
+        exibir_tabuleiro(tabuleiro)
+        linha = int(input(f'Jogador {jogador_atual}, escolha a linha (0-2): '))
+        coluna = int(input(f'Jogador {jogador_atual}, escolha a coluna (0-2): '))
+
+        if tabuleiro[linha][coluna] == ' ':
+            tabuleiro[linha][coluna] = jogador_atual
+            # Verificar vitória
+            if any(all(tabuleiro[i][j] == jogador_atual for j in range(3)) for i in range(3)) or \
+               any(all(tabuleiro[j][i] == jogador_atual for j in range(3)) for i in range(3)) or \
+               all(tabuleiro[i][i] == jogador_atual for i in range(3)) or \
+               all(tabuleiro[i][2 - i] == jogador_atual for i in range(3)):
+                vencedor = jogador_atual
+                break
+        else:
+            print("Posição já ocupada, tente novamente.")
+
+    exibir_tabuleiro(tabuleiro)
+    if vencedor:
+        print(f'Jogador {vencedor} venceu!')
+    else:
+        print('Empate!')
+
+jogo_da_velha()
+
+### 15. Controle de Agenda
+agenda = {}
+
+def menu():
+    print("\nMenu:")
+    print("1. Adicionar")
+    print("2. Alterar")
+    print("3. Listar")
+    print("4. Apagar")
+    print("5. Sair")
+    print(f'Tamanho da agenda: {len(agenda)}')
+
+def adicionar():
+    nome = input("Nome: ")
+    if nome in agenda:
+        print("Nome já existe na agenda.")
+    else:
+        idade = input("Idade: ")
+        cidade = input("Cidade: ")
+        agenda[nome] = {'idade': idade, 'cidade': cidade}
+
+def alterar():
+    nome = input("Nome da entrada a alterar: ")
+    if nome in agenda:
+        idade = input("Nova idade: ")
+        cidade = input("Nova cidade: ")
+        agenda[nome] = {'idade': idade, 'cidade': cidade}
+    else:
+        print("Nome não encontrado.")
+
+def listar():
+    for nome, info in agenda.items():
+        print(f'Nome: {nome}, Idade: {info["idade"]}, Cidade: {info["cidade"]}')
+
+def apagar():
+    nome = input("Nome da entrada a apagar: ")
+    if nome in agenda:
+        del agenda[nome]
+    else:
+        print("Nome não encontrado.")
+
+while True:
+    menu()
+    opcao = int(input("Escolha uma opção: "))
+    if opcao == 1:
+        adicionar()
+    elif opcao == 2:
+        alterar()
+    elif opcao == 3:
+        listar()
+    elif opcao == 4:
+        apagar()
+    elif opcao == 5:
+        break
