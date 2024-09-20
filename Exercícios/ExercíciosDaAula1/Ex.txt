@@ -1,0 +1,99 @@
+#1
+num1 = int(input("Insira o primeiro número inteiro: "))
+num2 = int(input("Insira o segundo número inteiro: "))
+
+soma = num1 + num2
+produto = num1 * num2
+diferenca = num1 - num2
+divisao = num1 / num2  
+
+print(f"Soma: {soma}")
+print(f"Produto: {produto}")
+print(f"Diferença: {diferenca}")
+print(f"Divisão: {divisao}")
+
+#2
+# Desenho da caixa
+print("Caixa:")
+print("********")
+print("*      *")
+print("*      *")
+print("********")
+
+
+# Desenho da oval
+print("\nOval:")
+print("   ***   ")
+print(" *     * ")
+print("*       *")
+print(" *     * ")
+print("   ***   ")
+
+# Desenho da seta
+print("\nSeta:")
+print("   *   ")
+print("  ***  ")
+print(" ***** ")
+print("*******")
+print("   *   ")
+print("   *   ")
+
+# Desenho do losango
+print("\nLosango:")
+print("   *   ")
+print("  * *  ")
+print(" *   * ")
+print("  * *  ")
+print("   *   ")
+
+#3
+numero = int(input("Insira um número inteiro: "))
+
+if numero % 2 == 0:
+    print(f"{numero} é par.")
+else:
+    print(f"{numero} é ímpar.")
+    
+#4
+numero = input("Insira um número de cinco dígitos: ")
+
+# Verifica se o número tem cinco dígitos
+if len(numero) == 5 and numero.isdigit():
+    print("   ".join(numero))
+else:
+    print("Número inválido! Insira exatamente cinco dígitos.")
+
+#5
+import math
+
+a = float(input("Insira o valor de a: "))
+b = float(input("Insira o valor de b: "))
+c = float(input("Insira o valor de c: "))
+
+delta = b**2 - 4*a*c
+
+if delta < 0:
+    print("A equação não tem raízes reais.")
+else:
+    x1 = (-b + math.sqrt(delta)) / (2 * a)
+    x2 = (-b - math.sqrt(delta)) / (2 * a)
+    
+    print(f"As raízes são: x' = {x1} e x'' = {x2}")
+
+#6
+total_segundos = int(input("Insira o tempo em segundos: "))
+
+dias = total_segundos // 86400
+horas = (total_segundos % 86400) // 3600
+minutos = (total_segundos % 3600) // 60
+segundos = total_segundos % 60
+
+print(f"{dias} dias, {horas} horas, {minutos} minutos, {segundos} segundos")
+
+#7
+celsius = float(input("Insira a temperatura em Celsius: "))
+
+fahrenheit = (9/5) * celsius + 32
+
+print(f"{celsius}°C é igual a {fahrenheit}°F")
+
